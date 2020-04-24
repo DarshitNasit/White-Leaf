@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  .color-white
+    script.
+      const page = "register"
+      const validateForm = ()=>{
+        const fname = document.getElementById('fname').value;
+        const lname = document.getElementById('lname').value;
+        
+        const toMatch = "^(?=.*[A-Za-z])[A-Za-z]{1,}$"
+        if(!fname.match(toMatch) || !lname.match(toMatch)){
+          alert('Enter valid name')
+          return false;
+        }
+        return true;
+      }
+    script(src="/js/add_class.js")
+    h1 Register
+    form(method='POST' action='/users/register' onsubmit="return validateForm()")
+      #form-group
+        label(for="fname") First Name:
+        input.form-control#fname(name='fname' type='text' value=`${typeof(fname) !== 'undefined' ? fname : ''}` required)
+      #form-group
+        label(for="lname") Last Name:
+        input.form-control#lname(name='lname' type='text' value=`${typeof(lname) !== 'undefined' ? lname : ''}` required)
+      #form-group
+        label(for='email') Email:
+        input.form-control#email(name='email' type='email' value=`${typeof(email) !== 'undefined' ? email : ''}` required)
+      #form-group
+        label(for='password') Password:
+        input.form-control#password(name='password' type='password' required)
+      #form-group
+        label(for='password2') Confirm Password:
+        input.form-control#password2(name='password2' type='password' required)
+      br
+      button.hbtn.hb-fill-middle2-rev-bg-br.hpad2.hbor2(type="submit")
+        i.fa.fa-user-plus(aria-hidden='true')
+        | Register
+    br
+    h4 Have an account ? 
+      a(href="/users/login") Login
+    br
+    hr
+    footer
+      p Copyright &copy; 2017 - 2020

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .color-white
+    script.
+      const page = "index"
+    script(src="/js/add_class.js")
+    h3 Available Articles
+    ul.tilesWrap
+      each article in articleAuthor
+        li
+          h3 #{article.title}
+          p #{article.name}
+          a(href=`/articles/view-article/${article.id}`) View
+    br
+    hr
+    footer
+      p Copyright &copy; 2017 - 2020

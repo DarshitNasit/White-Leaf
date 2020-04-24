@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .color-white
+    script.
+      const page = "all-users"
+    script(src="/js/add_class.js")
+    h3 All Users
+    ul.tilesWrap
+      each currUser in all_users
+          if currUser.email != my_email || (user && user.email == my_email)
+            li
+              h3 #{currUser.fname + ' ' + currUser.lname}
+              a(href=`/users/view-profile/${currUser._id}`) Profile
+	br
+    hr
+    footer
+      p Copyright &copy; 2017 - 2020

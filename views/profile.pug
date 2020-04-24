@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    .color-white
+        script.
+            const page = "profile"
+        script(src="/js/add_class.js")
+        style.
+            a{
+                color: lawngreen; 
+            }
+            a:hover{
+                color: white;
+            }
+        h3 User Info
+        ul.show-user
+            li First Name : #{curr_user.fname}
+            li Last Name : #{curr_user.lname}
+            li Email : #{curr_user.email}
+        if user && (user.id == curr_user._id || user.email == my_email)
+            form(action=`/users/edit-profile/${curr_user._id}`)
+                button.hbtn.hb-fill-right-rev-br.hpad2.hbor2(type="submit") 
+                    i.fa.fa-edit(aria-hidden='true')
+                    | Edit Profile
+        br
+        br
+        h3 User's Articles
+        ul.show-article
+            for article in curr_articles
+                li
+                    a(href=`/articles/view-article/${article._id}`) #{article.title}
+		br
+		hr
+		footer
+		  p Copyright &copy; 2017 - 2020

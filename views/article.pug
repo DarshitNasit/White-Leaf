@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .color-white
+    script.
+      const page = 'article'
+    script(src="/js/add_class.js")
+    h1= curr_article.title
+    h5 Written by #{curr_author}
+    p= curr_article.body
+    hr
+    if user
+      if user._id == curr_article.author_id || user.email == my_email
+        .form-row
+          .form-col
+              a.hbtn.hb-fill-middle2-rev-bg-br.hpad2.hbor2(href=`/articles/edit-article/${curr_article._id}`) 
+                  i.fa.fa-edit(aria-hidden='true')
+                  | Edit
+          .form-col
+              a.hbtn.hb-fill-middle2-rev-bg-br.hpad2.hbor2(href=`/articles/delete-article/${curr_article._id}`)
+                  i.fa.fa-trash(aria-hidden="true")
+                  | Delete
+  
+    h3 Images:  
+    ul.tilesWrap
+      each image in curr_article.images
+        a(href=`/images/${image}` target='_blank').form-col
+          img.fixed-size(src=`/images/${image}`)
+
+      .shadow
+    br
+    hr
+    footer
+      p Copyright &copy; 2017 - 2020

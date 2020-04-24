@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    title White Leaf
+    
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+    script(src="https://kit.fontawesome.com/58faed8b59.js" crossorigin="anonymous") 
+    link(rel='stylesheet' href='/css/style.css')
+    link(rel='stylesheet' href='/css/hoverbuttons.css')
+    link(rel='stylesheet' href='/css/images.scss')
+    link(rel='stylesheet' href='/css/tileswrap.css')
+    
+  body.background
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        i.fas.fa-seedling 
+        a.navbar-brand(href="/") White Leaf
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarNavAltMarkup
+            ul.navbar-nav.mr-auto
+                li
+                    i.fas.fa-home.spacer
+                li
+                    a.nav-item.nav-link#index(href="/") Home
+                li
+                    i.fas.fa-user.spacer
+                li
+                    a.nav-item.nav-link#all-users(href="/users/all-users") All Users
+                if user
+                    li
+                        i.fas.fa-newspaper.spacer
+                    li
+                        a.nav-item.nav-link#add-article(href="/articles/add-article") Add Article
+            ul.navbar-nav.ml-auto
+                if user
+                    li
+                        i.fas.fa-sign-out-alt.spacer
+                    li
+                        a.nav-item.nav-link#logout(href="/users/logout") Logout
+                    li
+                        i.fas.fa-user-circle.spacer
+                    li
+                        a.nav-item.nav-link#profile(href=`/users/view-profile/${user.id}`) Profile
+                else
+                    li
+                        i.fas.fa-crop-alt.spacer
+                    li
+                        a.nav-item.nav-link#register(href="/users/register") Register
+                    li
+                        i.fas.fa-sign-in-alt.spacer
+                    li    
+                        a.nav-item.nav-link#login(href="/users/login") Login
+    .container
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class="alert alert-danger") #{error.msg}
+      block content
+      
+    script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous")
+    script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous") 

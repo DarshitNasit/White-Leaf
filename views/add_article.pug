@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .color-white
+    script.
+      const page = "add-article"
+    script(src="/js/add_class.js")
+    form(method='POST' action='/articles/add-article' enctype='multipart/form-data')
+      #form-group
+        label(for='title') Title:
+        input.form-control#title(name='title' type='text' placeholder='Title of your article' required)
+      #form-group
+        label(for='body') Body:
+        textarea.form-control#body(name='body' placeholder='About your article' required)
+      #form-group
+        label(for='images') Images:
+          .custom-file(style='margin-top:7px')
+            input#images.custom-file-input(type='file' name='images' multiple)
+            label.custom-file-label(for='images') Choose file
+      br
+      button.hbtn.hb-fill-middle2-rev-bg-br.hpad2.hbor2(type="submit")
+        i.fa.fa-paper-plane(aria-hidden='true')
+        | Send
+      br
+      hr
+      footer
+        p Copyright &copy; 2017 - 2020

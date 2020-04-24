@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    .color-white
+        script.
+            const page = 'edit-profile'
+            const validateForm = ()=>{
+                const fname = document.getElementById('fname').value;
+                const lname = document.getElementById('lname').value;
+                
+                const toMatch = "^(?=.*[A-Za-z])[A-Za-z]{1,}$"
+                if(!fname.match(toMatch) || !lname.match(toMatch)){
+                    alert('Enter valid name')
+                    return false;
+                }
+                return true;
+            }
+        script(src="/js/add_class.js")
+        h1 #{curr_user.fname} #{curr_user.lname}
+        form(method='POST' action='/users/edit-profile/'+curr_user._id onsubmit="return validateForm()")
+            #form-group
+                label(for='fname') First Name:
+                input.form-control#fname(name='fname' type='text' value=curr_user.fname required)
+            #form-group
+                label(for='lname') Last Name:
+                input.form-control#lname(name='lname' type='text' value=curr_user.lname required)
+            #form-group
+                label(for='password') Current Password:
+                input.form-control#password(name='password' type='password' placeholder='Enter your current password...' required)
+            #form-group
+                label(for='new_password') New Password:
+                input.form-control#new_password(name='new_password' type='password' placeholder='Enter your new password if you want to change...')
+            #form-group
+                label(for='new_password2') Confirm New Password:
+                input.form-control#new_password2(name='new_password2' type='password' placeholder="Confirm new password...")
+            br
+            .form-row
+                .form-col
+                    button.hbtn.hb-fill-middle2-rev-bg-br.hpad2.hbor2(type="submit") 
+                        i.fa.fa-save(aria-hidden='true')
+                        | Save
+                .form-col
+                    a.hbtn.hb-fill-middle2-rev-bg-br.hpad2.hbor2(href=`/users/delete-profile/${curr_user._id}`)
+                        i.fa.fa-trash(aria-hidden="true")
+                        | Delete your account ?
+		br
+		hr
+		footer
+		  p Copyright &copy; 2017 - 2020

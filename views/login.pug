@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .color-white
+    script.
+      const page = "login"
+    script(src="/js/add_class.js")
+    h1 Login
+    form(method='POST', action='/users/login')
+      div#form-group
+        label(for='email') Email:
+        input.form-control(name='email' type='email' value=`${typeof email != 'undefined' ? email : ''}` required)
+      div#form-group
+        label(for='password') Password:
+        input.form-control(name='password' type='password' required)
+      br
+      button.hbtn.hb-fill-middle2-rev-bg-br.hpad2.hbor2(type="submit")
+        i.fa.fa-sign-in.fa-lg(aria-hidden='true')
+        | Login
+    br
+    h4 Do not have an account ? 
+      a(href="/users/register") Register
+    br
+    hr
+    footer
+      p Copyright &copy; 2017 - 2020
