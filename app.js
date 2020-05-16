@@ -7,8 +7,6 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
-const multer = require("multer");
-const uuid = require("uuid");
 
 // Launching App
 const app = express();
@@ -20,28 +18,28 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Connect To DataBase
 mongoose
-  .connect(process.env.database, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Database Connected ..."))
-  .catch((err) => console.log(err));
+	.connect(process.env.database, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log("Database Connected ..."))
+	.catch((err) => console.log(err));
 mongoose.set("useFindAndModify", false);
 
 // Session
 app.use(
-  session({
-    secret: process.env.secret,
-    resave: true,
-    saveUninitialized: true,
-  })
+	session({
+		secret: process.env.secret,
+		resave: true,
+		saveUninitialized: true,
+	})
 );
 
 // Connect Flash
 app.use(flash());
 app.use((req, res, next) => {
-  res.locals.messages = require("express-messages")(req, res);
-  next();
+	res.locals.messages = require("express-messages")(req, res);
+	next();
 });
 
 // Passport
@@ -51,9 +49,9 @@ app.use(passport.session());
 
 // Middleware
 app.use("*", (req, res, next) => {
-  res.locals.user = req.user || null;
-  res.locals.my_email = process.env.my_email;
-  next();
+	res.locals.user = req.user || null;
+	res.locals.my_email = process.env.my_email;
+	next();
 });
 
 // Redirect routes
