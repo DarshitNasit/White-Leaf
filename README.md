@@ -1,4 +1,4 @@
-# White - Leaf
+# White Leaf
 
 A container of articles and pictures
 
@@ -30,10 +30,10 @@ A container of articles and pictures
 -   Then add following field inside .env file do not include text written after //.
 
 ```env
-my_email = admin@gmail.com                // Email id of admin
-database = mongodb://localhost:27017      // link to mongodb here I am using local
-secret = my_secret                        // any word
-PORT = 5000                               // port number
+my_email = admin@gmail.com                      // Email id of admin
+database = mongodb://localhost:27017/login      // link to mongodb here I am using local with database name login
+secret = my_secret                              // any word
+PORT = 5000                                     // port number
 ```
 
 -   Open terminal in White-Leaf folder and run following commands.
