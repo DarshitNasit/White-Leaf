@@ -25,6 +25,7 @@ A container of articles and pictures
 ## Steps
 
 -   Clone this whole project and open folder in and code editor.
+-   Create folder "images" inside public folder.
 -   Create .env file inside White-leaf folder.
 -   Then add following field inside .env file do not include text written after //.
 
