@@ -40,7 +40,7 @@ PORT = 5000                         // port number
 
 ```
 npm install                         // only first time
-npm run App
+node app.js
 ```
 
 -   Open browser and enter following url. Instead of 5000 enter the port number selected above.
